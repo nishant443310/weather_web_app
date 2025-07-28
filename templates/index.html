@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1501973801540-537f08ccae7d?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border-radius: 10px;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffffff;
+            color: #333;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .weather {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .error {
+            color: #ffcccc;
+            background: #660000;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <h1>🌦 Weather Checker</h1>
+            <form method="POST">
+                <input type="text" name="city" placeholder="Enter city name" required>
+                <br>
+                <input type="submit" value="Get Weather">
+            </form>
+
+            {% if weather %}
+                {% if weather.error %}
+                    <div class="error">{{ weather.error }}</div>
+                {% else %}
+                    <div class="weather">
+                        <h2>{{ weather.city }}</h2>
+                        <p>Temperature: {{ weather.temp }}°C</p>
+                        <p>Humidity: {{ weather.humidity }}%</p>
+                        <p>Condition: {{ weather.description }}</p>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
