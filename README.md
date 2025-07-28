@@ -76,5 +76,6 @@ requests==2.31.0
 
 👨‍💻 Author
 Made with ❤️ by Nishant Arya
+
 linkedIn: www.linkedin.com/in/nishant-arya-10b29821b
 
